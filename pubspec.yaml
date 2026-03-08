@@ -1,0 +1,50 @@
+name: app
+description: Ahmed Khmis – Software Engineer Portfolio.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  font_awesome_flutter: ^10.7.0
+  responsive_framework: ^1.1.1
+  url_launcher: ^6.2.5
+  flutter_bloc: ^9.1.0
+  easy_localization: ^3.0.7
+  flutter_animate: ^4.5.2
+  google_fonts: ^6.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/logo.png
+    - assets/image-profile-Photoroom.jpeg
+    - assets/translations/
+    - assets/resumes/en/
+    - assets/resumes/fr/
+    - assets/images/projectsIcon/
+    - assets/images/screenshots/
+
+  fonts:
+    - family: Ubuntu
+      fonts:
+        - asset: assets/fonts/Ubuntu/Ubuntu-Bold.ttf
+        - asset: assets/fonts/Ubuntu/Ubuntu-Medium.ttf
+        - asset: assets/fonts/Ubuntu/Ubuntu-Regular.ttf
+        - asset: assets/fonts/Ubuntu/Ubuntu-Light.ttf
