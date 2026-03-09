@@ -39,6 +39,15 @@ const professionalApps = [
     appStoreURL: 'https://apps.apple.com/us/app/iccp-connect/id6751505425',
     playStoreURL: 'https://play.google.com/store/apps/details?id=com.agentera.iccpmdApp&hl=en_US',
   ),
+    ShowcaseAppModel(
+    name: 'Al Vetrina',
+    description:
+        'High-end product marketplace – Flutter mobile + ReactJS admin + Node.js backend.',
+    topic: 'E-commerce',
+    techStack: ['Flutter', 'ReactJS', 'Node.js', 'MySQL'],
+    image: 'assets/images/projectsIcon/alvetrina.png',
+    appStoreURL: 'https://apps.apple.com/us/app/al-vetrina-app/id6468264636',
+  ),
   ShowcaseAppModel(
     name: 'Jeyad 360',
     description:
@@ -46,6 +55,14 @@ const professionalApps = [
     topic: 'Horse Management',
     techStack: ['Flutter', 'Clean Architecture', 'Cubit'],
     image: 'assets/images/projectsIcon/jayed360.png',
+  ),
+    ShowcaseAppModel(
+    name: 'WindERP Mobile',
+    description:
+        'Enterprise resource planning app: inventory management, sales tracking, and employee management.',
+    topic: 'ERP',
+    techStack: ['Flutter', 'MVVM', 'Provider'],
+    image: 'assets/images/projectsIcon/windERP.png',
   ),
   ShowcaseAppModel(
     name: 'AutoPal',
@@ -60,7 +77,7 @@ const professionalApps = [
     description:
         'Cross-platform cash register for desktop and Android – sales, scanning, inventory, and tracking.',
     topic: 'Point of Sale',
-    techStack: ['Flutter', 'MVVM', 'Provider'],
+    techStack: ['Flutter', 'MVVM', 'Provider', 'Windows'],
     image: 'assets/images/projectsIcon/windCaisse.png',
   ),
   ShowcaseAppModel(
@@ -76,32 +93,15 @@ const professionalApps = [
     description:
         'B2B football prediction app with real-time match forecasts, analytics, and scoring predictions.',
     topic: 'Sports Tech',
-    techStack: ['Flutter', 'MVVM', 'REST API'],
-    image: 'assets/images/projectsIcon/windPronostics.png',
-  ),
-  ShowcaseAppModel(
-    name: 'WindERP Mobile',
-    description:
-        'Enterprise resource planning app: inventory management, sales tracking, and employee management.',
-    topic: 'ERP',
     techStack: ['Flutter', 'MVVM', 'Provider'],
-    image: 'assets/images/projectsIcon/windERP.png',
-  ),
-  ShowcaseAppModel(
-    name: 'Al Vetrina',
-    description:
-        'High-end product marketplace – Flutter mobile + ReactJS admin + Node.js backend.',
-    topic: 'E-commerce',
-    techStack: ['Flutter', 'ReactJS', 'Node.js', 'MySQL'],
-    image: 'assets/images/projectsIcon/alvetrina.png',
-    appStoreURL: 'https://apps.apple.com/us/app/al-vetrina-app/id6468264636',
+    image: 'assets/images/projectsIcon/windPronostics.png',
   ),
   ShowcaseAppModel(
     name: 'VisitMe',
     description:
         'Meeting management app consuming RESTful APIs – auth, scheduling, notifications.',
     topic: 'Meeting Management',
-    techStack: ['Flutter', 'REST API'],
+    techStack: ['Flutter',, 'MVVM', 'Provider', 'REST API'],
     image: 'assets/images/projectsIcon/visitMe.png',
   ),
 ];

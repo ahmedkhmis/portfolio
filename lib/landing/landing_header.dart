@@ -329,6 +329,8 @@ class _SocialIconState extends State<_SocialIcon> {
 
   @override
   Widget build(BuildContext context) {
+        final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
     return MouseRegion(
           cursor: SystemMouseCursors.click,
           onEnter: (_) => setState(() => _hovered = true),
@@ -341,17 +343,17 @@ class _SocialIconState extends State<_SocialIcon> {
               decoration: BoxDecoration(
                 color: _hovered
                     ? AppColors.accent.withAlpha(40)
-                    : Colors.white.withAlpha(15),
+                    : (isDark?Colors.black:Colors.white).withAlpha(15),
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(
                   color: _hovered
                       ? AppColors.accent.withAlpha(100)
-                      : Colors.white.withAlpha(20),
+                      : (isDark?Colors.white:Colors.black).withAlpha(20),
                 ),
               ),
               child: Icon(
                 widget.icon,
-                color: _hovered ? AppColors.accent : Colors.white,
+                color: _hovered ? AppColors.accent : (isDark?Colors.white:Colors.black),
                 size: 22,
               ),
             ),
