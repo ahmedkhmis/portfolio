@@ -36,6 +36,8 @@ const professionalApps = [
     topic: 'Community Services',
     techStack: ['Flutter', 'Clean Architecture', 'Cubit', 'FCM'],
     image: 'assets/images/projectsIcon/iccp.png',
+    appStoreURL: 'https://apps.apple.com/us/app/iccp-connect/id6751505425',
+    playStoreURL: 'https://play.google.com/store/apps/details?id=com.agentera.iccpmdApp&hl=en_US',
   ),
   ShowcaseAppModel(
     name: 'Jeyad 360',
@@ -92,6 +94,7 @@ const professionalApps = [
     topic: 'E-commerce',
     techStack: ['Flutter', 'ReactJS', 'Node.js', 'MySQL'],
     image: 'assets/images/projectsIcon/alvetrina.png',
+    appStoreURL: 'https://apps.apple.com/us/app/al-vetrina-app/id6468264636',
   ),
   ShowcaseAppModel(
     name: 'VisitMe',

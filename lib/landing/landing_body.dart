@@ -79,7 +79,7 @@ class LandingBody extends StatelessWidget {
                   : 1,
               crossAxisSpacing: 16,
               mainAxisSpacing: 16,
-              mainAxisExtent: 350,
+              mainAxisExtent: 380,
             ),
             itemBuilder: (context, i) {
               return ShowcaseAppItem(professionalApps[i], index: i);
