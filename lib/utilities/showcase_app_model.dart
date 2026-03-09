@@ -101,7 +101,7 @@ const professionalApps = [
     description:
         'Meeting management app consuming RESTful APIs – auth, scheduling, notifications.',
     topic: 'Meeting Management',
-    techStack: ['Flutter',, 'MVVM', 'Provider', 'REST API'],
+    techStack: ['Flutter', 'MVVM', 'Provider', 'REST API'],
     image: 'assets/images/projectsIcon/visitMe.png',
   ),
 ];
