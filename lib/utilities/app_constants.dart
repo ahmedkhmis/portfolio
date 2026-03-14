@@ -21,7 +21,7 @@ abstract class AppConstants {
   static const resumeFrFull =
       'assets/resumes/fr/Ahmed_Khmis_CV_Details_Complets_2026_FR.pdf';
   static const resumeFrOne =
-      'assets/resumes/fr/Ahmed_Khmis_CV_Synthèse_FR.pdf';
+      'assets/resumes/fr/Ahmed_Khmis_CV_Synthese_FR.pdf';
 
   // ─── Image assets ────────────────────────────────────────────────
   static const profileImageAssetPath = 'assets/image-profile-Photoroom.jpeg';

@@ -6,9 +6,9 @@ class AppColors {
   AppColors._();
 
   // ─── Brand / Accent ───────────────────────────────────────────────
-  static const Color accent = Color(0xFF6C63FF); // Vibrant purple-blue
-  static const Color accentLight = Color(0xFF8B83FF);
-  static const Color accentDark = Color(0xFF4F46E5);
+  static const Color accent = Color(0xFF0468D7); // Flutter blue
+  static const Color accentLight = Color(0xFF3D8FEF);
+  static const Color accentDark = Color(0xFF0250A8);
 
   // ─── Dark Theme ───────────────────────────────────────────────────
   static const Color darkPrimary = Color(0xFF0F0F1A);
@@ -30,7 +30,7 @@ class AppColors {
 
   // ─── Gradients ────────────────────────────────────────────────────
   static const LinearGradient accentGradient = LinearGradient(
-    colors: [accent, Color(0xFF9D4EDD)],
+    colors: [accent, Color(0xFF54B4F8)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );

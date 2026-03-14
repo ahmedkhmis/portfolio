@@ -100,6 +100,23 @@ class _ResumeCard extends StatefulWidget {
 class _ResumeCardState extends State<_ResumeCard> {
   bool _hovered = false;
 
+  void _showPreview() {
+    // Build the URL for the PDF asset (Flutter web serves assets at assets/assets/...)
+    String pdfUrl = widget.assetPath;
+    if (pdfUrl.startsWith('assets/')) {
+      pdfUrl = 'assets/$pdfUrl';
+    }
+
+    showDialog(
+      context: context,
+      builder: (context) => _ResumePreviewDialog(
+        title: widget.title,
+        pdfUrl: pdfUrl,
+        assetPath: widget.assetPath,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -110,7 +127,7 @@ class _ResumeCardState extends State<_ResumeCard> {
       onEnter: (_) => setState(() => _hovered = true),
       onExit: (_) => setState(() => _hovered = false),
       child: GestureDetector(
-        onTap: () => app_launcher.launchUrl(widget.assetPath),
+        onTap: _showPreview,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
           padding: const EdgeInsets.all(20.0),
@@ -187,7 +204,7 @@ class _ResumeCardState extends State<_ResumeCard> {
                 turns: _hovered ? 0.0 : 0.0,
                 duration: const Duration(milliseconds: 200),
                 child: Icon(
-                  Icons.download_rounded,
+                  Icons.visibility_outlined,
                   color: _hovered
                       ? AppColors.accent
                       : theme.iconTheme.color,
@@ -198,5 +215,175 @@ class _ResumeCardState extends State<_ResumeCard> {
         ),
       ),
     ).animate(delay: (150 * widget.index).ms).fadeIn(duration: 400.ms).slideY(begin: 0.1, end: 0);
+  }
+}
+
+// ─── Preview Dialog ──────────────────────────────────────────────────
+class _ResumePreviewDialog extends StatelessWidget {
+  final String title;
+  final String pdfUrl;
+  final String assetPath;
+
+  const _ResumePreviewDialog({
+    required this.title,
+    required this.pdfUrl,
+    required this.assetPath,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final screenSize = MediaQuery.of(context).size;
+    final dialogWidth = screenSize.width * 0.85;
+    final dialogHeight = screenSize.height * 0.88;
+
+    return Dialog(
+      backgroundColor: Colors.transparent,
+      insetPadding: const EdgeInsets.all(20),
+      child: Container(
+        width: dialogWidth,
+        height: dialogHeight,
+        decoration: BoxDecoration(
+          color: theme.scaffoldBackgroundColor,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(
+            color: isDark
+                ? Colors.white.withAlpha(15)
+                : Colors.black.withAlpha(15),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withAlpha(isDark ? 80 : 30),
+              blurRadius: 30,
+              offset: const Offset(0, 10),
+            ),
+          ],
+        ),
+        child: Column(
+          children: [
+            // ── Header ──
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+              decoration: BoxDecoration(
+                color: theme.cardColor,
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(16),
+                  topRight: Radius.circular(16),
+                ),
+                border: Border(
+                  bottom: BorderSide(
+                    color: theme.dividerColor,
+                  ),
+                ),
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      gradient: AppColors.accentGradient,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: const Icon(
+                      Icons.picture_as_pdf_rounded,
+                      color: Colors.white,
+                      size: 20,
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      title,
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.w700,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  _HeaderButton(
+                    icon: Icons.download_rounded,
+                    tooltip: 'resume_download'.tr(),
+                    onTap: () => app_launcher.launchUrl(assetPath),
+                  ),
+                  const SizedBox(width: 8),
+                  _HeaderButton(
+                    icon: Icons.close_rounded,
+                    tooltip: 'Close',
+                    onTap: () => Navigator.of(context).pop(),
+                  ),
+                ],
+              ),
+            ),
+            // ── PDF embed ──
+            Expanded(
+              child: ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(16),
+                  bottomRight: Radius.circular(16),
+                ),
+                child: HtmlElementView(
+                  viewType: 'iframeElement-$pdfUrl',
+                  onPlatformViewCreated: (_) {},
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// ─── Header Action Button ────────────────────────────────────────────
+class _HeaderButton extends StatefulWidget {
+  final IconData icon;
+  final String tooltip;
+  final VoidCallback onTap;
+
+  const _HeaderButton({
+    required this.icon,
+    required this.tooltip,
+    required this.onTap,
+  });
+
+  @override
+  State<_HeaderButton> createState() => _HeaderButtonState();
+}
+
+class _HeaderButtonState extends State<_HeaderButton> {
+  bool _hovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Tooltip(
+      message: widget.tooltip,
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        onEnter: (_) => setState(() => _hovered = true),
+        onExit: (_) => setState(() => _hovered = false),
+        child: GestureDetector(
+          onTap: widget.onTap,
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 150),
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: _hovered
+                  ? AppColors.accent.withAlpha(25)
+                  : Colors.transparent,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Icon(
+              widget.icon,
+              size: 20,
+              color: _hovered
+                  ? AppColors.accent
+                  : Theme.of(context).iconTheme.color,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

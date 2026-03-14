@@ -10,6 +10,7 @@ class LandingNavigationBar extends StatefulWidget {
   final GlobalKey educationKey;
   final GlobalKey projectsKey;
   final GlobalKey resumeKey;
+  final GlobalKey contactKey;
 
   const LandingNavigationBar({
     super.key,
@@ -19,6 +20,7 @@ class LandingNavigationBar extends StatefulWidget {
     required this.educationKey,
     required this.projectsKey,
     required this.resumeKey,
+    required this.contactKey,
   });
 
   @override
@@ -114,6 +116,10 @@ class _LandingNavigationBarState extends State<LandingNavigationBar> {
                         _NavButton(
                           label: 'nav_resume'.tr(),
                           onTap: () => _scrollToSection(widget.resumeKey),
+                        ),
+                        _NavButton(
+                          label: 'nav_contact'.tr(),
+                          onTap: () => _scrollToSection(widget.contactKey),
                         ),
                       ],
                     ),

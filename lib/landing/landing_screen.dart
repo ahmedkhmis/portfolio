@@ -23,6 +23,7 @@ class _LandingScreenState extends State<LandingScreen> {
   late final GlobalKey _educationKey;
   late final GlobalKey _projectsKey;
   late final GlobalKey _resumeKey;
+  late final GlobalKey _contactKey;
 
   @override
   void initState() {
@@ -34,6 +35,7 @@ class _LandingScreenState extends State<LandingScreen> {
     _educationKey = GlobalKey();
     _projectsKey = GlobalKey();
     _resumeKey = GlobalKey();
+    _contactKey = GlobalKey();
   }
 
   @override
@@ -76,6 +78,7 @@ class _LandingScreenState extends State<LandingScreen> {
                         educationKey: _educationKey,
                         projectsKey: _projectsKey,
                         resumeKey: _resumeKey,
+                        contactKey: _contactKey,
                       ),
                     ],
                   ),
@@ -88,6 +91,7 @@ class _LandingScreenState extends State<LandingScreen> {
                 educationKey: _educationKey,
                 projectsKey: _projectsKey,
                 resumeKey: _resumeKey,
+                contactKey: _contactKey,
               ),
               ScrollUpIndicator(_scrollController),
             ],
@@ -161,6 +165,14 @@ class _LandingScreenState extends State<LandingScreen> {
             onTap: () {
               Navigator.pop(context);
               _scrollToSection(_resumeKey);
+            },
+          ),
+          _DrawerItem(
+            label: 'nav_contact'.tr(),
+            icon: Icons.mail_outline,
+            onTap: () {
+              Navigator.pop(context);
+              _scrollToSection(_contactKey);
             },
           ),
         ],

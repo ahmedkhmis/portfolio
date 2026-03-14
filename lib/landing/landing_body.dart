@@ -6,6 +6,7 @@ import 'package:app/landing/portfolio_section.dart';
 import 'package:app/landing/experience_section.dart';
 import 'package:app/landing/education_section.dart';
 import 'package:app/landing/resume_section.dart';
+import 'package:app/landing/contact_section.dart';
 import 'package:app/landing/landing_footer.dart';
 import 'package:app/landing/widgets/showcase_app_item.dart';
 import 'package:app/utilities/showcase_app_model.dart';
@@ -17,6 +18,7 @@ class LandingBody extends StatelessWidget {
   final GlobalKey educationKey;
   final GlobalKey projectsKey;
   final GlobalKey resumeKey;
+  final GlobalKey contactKey;
 
   const LandingBody({
     super.key,
@@ -25,6 +27,7 @@ class LandingBody extends StatelessWidget {
     required this.educationKey,
     required this.projectsKey,
     required this.resumeKey,
+    required this.contactKey,
   });
 
   @override
@@ -125,6 +128,10 @@ class LandingBody extends StatelessWidget {
 
           // ── Resume Downloads ──
           ResumeSection(key: resumeKey),
+          const SizedBox(height: 80.0),
+
+          // ── Contact ──
+          ContactSection(key: contactKey),
           const SizedBox(height: 80.0),
 
           // ── Footer ──
