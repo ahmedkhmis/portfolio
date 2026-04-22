@@ -18,9 +18,7 @@ class LandingFooter extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 32.0),
       decoration: BoxDecoration(
-        border: Border(
-          top: BorderSide(color: theme.dividerColor, width: 1),
-        ),
+        border: Border(top: BorderSide(color: theme.dividerColor, width: 1)),
       ),
       child: Column(
         children: [
@@ -38,14 +36,8 @@ class LandingFooter extends StatelessWidget {
                 icon: FontAwesomeIcons.linkedin,
                 url: AppConstants.linkedInProfileURL,
               ),
-              _FooterLink(
-                icon: Icons.email_rounded,
-                url: AppConstants.eMail,
-              ),
-              _FooterLink(
-                icon: Icons.phone_rounded,
-                url: AppConstants.phone,
-              ),
+              _FooterLink(icon: Icons.email_rounded, url: AppConstants.eMail),
+              _FooterLink(icon: Icons.phone_rounded, url: AppConstants.phone),
             ],
           ),
           const SizedBox(height: 20),

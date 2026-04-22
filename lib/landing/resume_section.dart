@@ -15,15 +15,9 @@ class ResumeSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'resume_title'.tr(),
-          style: theme.textTheme.headlineMedium,
-        ),
+        Text('resume_title'.tr(), style: theme.textTheme.headlineMedium),
         const SizedBox(height: 8.0),
-        Text(
-          'resume_subtitle'.tr(),
-          style: theme.textTheme.bodyLarge,
-        ),
+        Text('resume_subtitle'.tr(), style: theme.textTheme.bodyLarge),
         const SizedBox(height: 8.0),
         Divider(color: theme.dividerColor, thickness: 1.5),
         const SizedBox(height: 24.0),
@@ -48,13 +42,13 @@ class ResumeSection extends StatelessWidget {
                   assetPath: AppConstants.resumeEnFull,
                   index: 0,
                 ),
-                _ResumeCard(
-                  title: 'resume_en_one'.tr(),
-                  lang: 'EN',
-                  icon: Icons.article,
-                  assetPath: AppConstants.resumeEnOne,
-                  index: 1,
-                ),
+                // _ResumeCard(
+                //   title: 'resume_en_one'.tr(),
+                //   lang: 'EN',
+                //   icon: Icons.article,
+                //   assetPath: AppConstants.resumeEnOne,
+                //   index: 1,
+                // ),
                 _ResumeCard(
                   title: 'resume_fr_full'.tr(),
                   lang: 'FR',
@@ -62,13 +56,13 @@ class ResumeSection extends StatelessWidget {
                   assetPath: AppConstants.resumeFrFull,
                   index: 2,
                 ),
-                _ResumeCard(
-                  title: 'resume_fr_one'.tr(),
-                  lang: 'FR',
-                  icon: Icons.article,
-                  assetPath: AppConstants.resumeFrOne,
-                  index: 3,
-                ),
+                // _ResumeCard(
+                //   title: 'resume_fr_one'.tr(),
+                //   lang: 'FR',
+                //   icon: Icons.article,
+                //   assetPath: AppConstants.resumeFrOne,
+                //   index: 3,
+                // ),
               ],
             );
           },
@@ -123,98 +117,101 @@ class _ResumeCardState extends State<_ResumeCard> {
     final isDark = theme.brightness == Brightness.dark;
 
     return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      onEnter: (_) => setState(() => _hovered = true),
-      onExit: (_) => setState(() => _hovered = false),
-      child: GestureDetector(
-        onTap: _showPreview,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
-          padding: const EdgeInsets.all(20.0),
-          decoration: BoxDecoration(
-            color: _hovered
-                ? AppColors.accent.withAlpha(30)
-                : theme.cardColor,
-            borderRadius: BorderRadius.circular(12.0),
-            border: Border.all(
-              color: _hovered
-                  ? AppColors.accent.withAlpha(120)
-                  : isDark
+          cursor: SystemMouseCursors.click,
+          onEnter: (_) => setState(() => _hovered = true),
+          onExit: (_) => setState(() => _hovered = false),
+          child: GestureDetector(
+            onTap: _showPreview,
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 200),
+              padding: const EdgeInsets.all(20.0),
+              decoration: BoxDecoration(
+                color: _hovered
+                    ? AppColors.accent.withAlpha(30)
+                    : theme.cardColor,
+                borderRadius: BorderRadius.circular(12.0),
+                border: Border.all(
+                  color: _hovered
+                      ? AppColors.accent.withAlpha(120)
+                      : isDark
                       ? Colors.white.withAlpha(10)
                       : Colors.black.withAlpha(10),
-              width: _hovered ? 1.5 : 1.0,
-            ),
-            boxShadow: _hovered
-                ? [
-                    BoxShadow(
-                      color: AppColors.accent.withAlpha(40),
-                      blurRadius: 16,
-                      offset: const Offset(0, 4),
-                    ),
-                  ]
-                : [],
-          ),
-          child: Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  gradient: AppColors.accentGradient,
-                  borderRadius: BorderRadius.circular(10),
+                  width: _hovered ? 1.5 : 1.0,
                 ),
-                child: Icon(widget.icon, color: Colors.white, size: 24),
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      widget.title,
-                      style: theme.textTheme.titleMedium?.copyWith(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 2,
-                      ),
-                      decoration: BoxDecoration(
-                        color: AppColors.accent.withAlpha(30),
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      child: Text(
-                        widget.lang,
-                        style: const TextStyle(
-                          color: AppColors.accent,
-                          fontSize: 11,
-                          fontWeight: FontWeight.w700,
-                          letterSpacing: 1,
+                boxShadow: _hovered
+                    ? [
+                        BoxShadow(
+                          color: AppColors.accent.withAlpha(40),
+                          blurRadius: 16,
+                          offset: const Offset(0, 4),
                         ),
-                      ),
+                      ]
+                    : [],
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      gradient: AppColors.accentGradient,
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                  ],
-                ),
+                    child: Icon(widget.icon, color: Colors.white, size: 24),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.title,
+                          style: theme.textTheme.titleMedium?.copyWith(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 2,
+                          ),
+                          decoration: BoxDecoration(
+                            color: AppColors.accent.withAlpha(30),
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                          child: Text(
+                            widget.lang,
+                            style: const TextStyle(
+                              color: AppColors.accent,
+                              fontSize: 11,
+                              fontWeight: FontWeight.w700,
+                              letterSpacing: 1,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  AnimatedRotation(
+                    turns: _hovered ? 0.0 : 0.0,
+                    duration: const Duration(milliseconds: 200),
+                    child: Icon(
+                      Icons.visibility_outlined,
+                      color: _hovered
+                          ? AppColors.accent
+                          : theme.iconTheme.color,
+                    ),
+                  ),
+                ],
               ),
-              AnimatedRotation(
-                turns: _hovered ? 0.0 : 0.0,
-                duration: const Duration(milliseconds: 200),
-                child: Icon(
-                  Icons.visibility_outlined,
-                  color: _hovered
-                      ? AppColors.accent
-                      : theme.iconTheme.color,
-                ),
-              ),
-            ],
+            ),
           ),
-        ),
-      ),
-    ).animate(delay: (150 * widget.index).ms).fadeIn(duration: 400.ms).slideY(begin: 0.1, end: 0);
+        )
+        .animate(delay: (150 * widget.index).ms)
+        .fadeIn(duration: 400.ms)
+        .slideY(begin: 0.1, end: 0);
   }
 }
 
@@ -271,11 +268,7 @@ class _ResumePreviewDialog extends StatelessWidget {
                   topLeft: Radius.circular(16),
                   topRight: Radius.circular(16),
                 ),
-                border: Border(
-                  bottom: BorderSide(
-                    color: theme.dividerColor,
-                  ),
-                ),
+                border: Border(bottom: BorderSide(color: theme.dividerColor)),
               ),
               child: Row(
                 children: [
