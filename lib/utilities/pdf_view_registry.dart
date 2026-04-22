@@ -5,12 +5,7 @@ import 'package:app/utilities/app_constants.dart';
 /// Registers iframe-based platform views for each resume PDF
 /// so they can be embedded via [HtmlElementView] in Flutter web.
 void registerResumePlatformViews() {
-  final resumePaths = [
-    AppConstants.resumeEnFull,
-    AppConstants.resumeEnOne,
-    AppConstants.resumeFrFull,
-    AppConstants.resumeFrOne,
-  ];
+  final resumePaths = [AppConstants.resumeEnFull, AppConstants.resumeFrFull];
 
   for (final path in resumePaths) {
     // Flutter web serves assets at assets/<original-path>
@@ -22,7 +17,8 @@ void registerResumePlatformViews() {
     final viewType = 'iframeElement-$webUrl';
 
     ui_web.platformViewRegistry.registerViewFactory(viewType, (int viewId) {
-      final iframe = web.document.createElement('iframe') as web.HTMLIFrameElement;
+      final iframe =
+          web.document.createElement('iframe') as web.HTMLIFrameElement;
       iframe.src = webUrl;
       iframe.style.border = 'none';
       iframe.style.width = '100%';
